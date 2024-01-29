@@ -26,4 +26,10 @@ public class FilmController {
         return filmRepository.findAll();
     }
 
+    @DeleteMapping(path = "/film/{id}")
+    public ResponseEntity deleteFilm(@PathVariable("id") Long id) {
+        filmRepository.deleteById(id);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
 }
