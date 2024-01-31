@@ -2,33 +2,36 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Film;
 import com.example.demo.repository.FilmRepository;
+import com.example.demo.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping(path = "/api")
+@RestController
+@RequestMapping("/api/")
 public class FilmController {
 
     @Autowired
-    private FilmRepository filmRepository;
+    private FilmService filmService;
 
-    @PostMapping(path = "/film")
-    public ResponseEntity createFilm(@RequestBody Film film) {
-        filmRepository.save(film);
+    @PostMapping("film")
+    public ResponseEntity createFilm(
+            @RequestBody Film film
+    ) {
+        filmService.addFilm(film);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping(path = "/film")
+    @GetMapping("film")
     public @ResponseBody Iterable<Film> getAllFilms() {
-        return filmRepository.findAll();
+        return filmService.getAllFilms();
     }
 
-    @DeleteMapping(path = "/film/{id}")
+    @DeleteMapping("film/{id}")
     public ResponseEntity deleteFilm(@PathVariable("id") Long id) {
-        filmRepository.deleteById(id);
+        filmService.deleteById(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
