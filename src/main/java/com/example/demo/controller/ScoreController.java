@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.DTO.ScoreDTO;
+import com.example.demo.domain.Film;
+import com.example.demo.domain.Score;
 import com.example.demo.domain.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,17 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/")
-public class UserController {
+public class ScoreController {
 
     @Autowired
-    private UserRepository userRepository;
+    private ScoreService scoreService;
 
-    @PostMapping("user")
-    public ResponseEntity  createUser(
-            @RequestBody User user
+    @PostMapping("score")
+    public ResponseEntity addScore(
+            @RequestBody ScoreDTO scoreDTO
     ) {
-        userRepository.save(user);
-        return new ResponseEntity<>("User created.", HttpStatus.CREATED);
+        scoreService.addScore(scoreDTO);
+        return  ResponseEntity.ok("Score added.");
     }
+
 
 }
