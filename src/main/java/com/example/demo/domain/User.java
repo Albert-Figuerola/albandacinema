@@ -1,13 +1,11 @@
-package com.example.demo.entity;
+package com.example.demo.domain;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
-import java.util.Set;
-import java.util.UUID;
+import java.util.List;
 
 @Entity
-public class Film {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,29 +13,36 @@ public class Film {
 
     private String name;
 
-    private String description;
+    private String lastname;
 
-    @ManyToMany
-    @JoinTable(
-            name = "rating_films",
-            joinColumns = @JoinColumn(name = "film_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    Set<Film> filmScore;
+    private String email;
+
+    private String password;
 
     private LocalDateTime created_at;
 
     private LocalDateTime updated_at;
 
-    public Film() {
+    public User() {
         this.created_at = LocalDateTime.now();
-        this.updated_at = updated_at;
+        this.updated_at = LocalDateTime.now();
     }
 
-    public Film(Long id, String name, String description) {
+    public User(
+            Long id,
+            String name,
+            String lastname,
+            String email,
+            String password,
+            List<Film> score,
+            LocalDateTime created_at,
+            LocalDateTime updated_at
+    ) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
@@ -58,22 +63,30 @@ public class Film {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    /*
-    public Set<Film> getFilmScore() {
-        return filmScore;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void setFilmScore(Set<Film> filmScore) {
-        this.filmScore = filmScore;
+    public String getEmail() {
+        return email;
     }
-    */
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public LocalDateTime getCreated_at() {
         return created_at;
     }
