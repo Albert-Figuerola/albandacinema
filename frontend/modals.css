@@ -1,0 +1,10 @@
+.modal {
+  display: none;
+}
+
+.modal-dialog {
+  width: 380px;
+  transition: bottom .75s ease-in-out;
+}
+
+
