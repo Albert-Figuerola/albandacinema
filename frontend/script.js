@@ -42,21 +42,8 @@ $(document).ready(function () {
 
 
 
-    /*
-    document.addEventListener("DOMContentLoaded", function () {
-        // Hacer una solicitud AJAX para obtener datos del controlador
-        fetch(URL + 'api/film')
-            .then(response => response.json())
-            .then(data => {
-                console.log("Hola")
-                cardImd.innerHTML = `
-                <img src="${data.urlImagen}" alt="Imagen de la película">
-                <p>${data.descripcion}</p>
-            `;
-            })
-            .catch(error => console.error('Error al obtener datos:', error));
-    });
 
+    /*
     // Modal
     let modalWindow = document.getElementById('modalSignin');
     let openModal = document.getElementById('openModal');

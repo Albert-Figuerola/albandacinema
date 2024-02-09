@@ -1,10 +1,12 @@
 .modal {
-  display: none;
+  display: block;
 }
 
 .modal-dialog {
   width: 380px;
   transition: bottom .75s ease-in-out;
 }
+
+
 
 
