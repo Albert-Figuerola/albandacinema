@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "film")
 public class Film {
 
     @Id
@@ -16,7 +18,14 @@ public class Film {
 
     private String description;
 
+    private String duration;
+
+    private String url;
+
     private Boolean active;
+
+    @OneToMany(mappedBy = "film")
+    Set<Score> score;
 
     private LocalDateTime created_at;
 
@@ -31,15 +40,20 @@ public class Film {
             Long id,
             String name,
             String description,
-            List<User> score,
+            String duration,
+            String url,
             Boolean active,
+            Set<Score> score,
             LocalDateTime created_at,
             LocalDateTime updated_at
     ) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.duration = duration;
+        this.url = url;
         this.active = active;
+        this.score = score;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
@@ -66,6 +80,22 @@ public class Film {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Boolean getActive() {

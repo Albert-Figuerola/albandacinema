@@ -7,13 +7,13 @@ import com.example.demo.domain.User;
 import com.example.demo.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
+@CrossOrigin("*")
 public class ScoreController {
 
     @Autowired
@@ -25,6 +25,13 @@ public class ScoreController {
     ) {
         scoreService.addScore(scoreDTO);
         return  ResponseEntity.ok("Score added.");
+    }
+
+    @GetMapping("score/{filmId}")
+    public int getScoreByFilm(
+            @PathVariable("filmId") Long filmId
+    ) {
+        return scoreService.getScoreByFilm(filmId);
     }
 
 

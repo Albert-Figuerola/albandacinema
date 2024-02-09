@@ -1,11 +1,13 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.Mapper.FilmSummaryMapper;
 import com.example.demo.domain.Film;
 import com.example.demo.repository.FilmRepository;
 import com.example.demo.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,6 +23,13 @@ public class FilmServiceImpl implements FilmService {
     @Override
     public List<Film> getAllFilms() {
         return filmRepository.findAll();
+    }
+
+    @Override
+    public List<FilmSummaryMapper> getSummaryFilms() {
+
+
+        return filmRepository.getSummaryFilms();
     }
 
     @Override

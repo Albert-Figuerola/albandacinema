@@ -8,13 +8,15 @@ body {
   color: rgb(var(--bs-tertiary-color-rgb));
 }
 
-
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
+  margin: 0 auto;
+  width: 60%;
+  height: 60%;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {

@@ -3,8 +3,10 @@ package com.example.demo.domain;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
@@ -18,6 +20,9 @@ public class User {
     private String email;
 
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    Set<Score> score;
 
     private LocalDateTime created_at;
 
